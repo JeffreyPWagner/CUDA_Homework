@@ -24,13 +24,16 @@ int main (int argc, char *argv[])
    long seconds = (end.tv_sec - start.tv_sec);
    long micros = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
 
-   printf("Time elpased is %zu seconds and %zu micros\n", seconds, micros);
+   printf("Parallel time elpased is %zu seconds or %zu micros\n", seconds, micros);
 
-int i;
+   int i;
+   long sum = 0;
  
-   printf ("Start of results:\n");
-   for (i=0; i < 16; i++)
-      printf ("%d ", result[i]);
+   printf ("Summing final result\n");
+   for (i=0; i < ARRAY_SIZE; i++)
+      sum += result[i];
+
+   printf ("%zu ", sum);
    printf ("\n");
    
    free (result);
